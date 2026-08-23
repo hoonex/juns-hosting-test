@@ -1,0 +1,47 @@
+name: Daily tech carousel
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 07:00 Asia/Seoul = 22:00 UTC on the previous day
+    - cron: '0 22 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-tech-carousel
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm install
+      - name: Generate news and cards
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5.6-luna' }}
+        run: npm run daily
+      - name: Commit generated data and images
+        run: |
+          git config user.name "daily-tech-bot"
+          git config user.email "daily-tech-bot@users.noreply.github.com"
+          git add public/data public/output
+          git diff --cached --quiet || git commit -m "content: daily tech carousel $(date -u +%F)"
+          git push
+      - name: Publish Instagram carousel
+        if: ${{ vars.INSTAGRAM_AUTO_PUBLISH == 'true' }}
+        env:
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+          INSTAGRAM_API_VERSION: ${{ vars.INSTAGRAM_API_VERSION || 'v23.0' }}
+          PUBLIC_BASE_URL: ${{ vars.PUBLIC_BASE_URL }}
+          DRY_RUN: 'false'
+        run: npm run publish:instagram
