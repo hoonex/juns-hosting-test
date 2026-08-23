@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install
+      - run: npm run build
+      - name: Syntax checks
+        run: |
+          node --check src/main.js
+          node --check scripts/schema.mjs
+          node --check scripts/generate-news.mjs
+          node --check scripts/render-carousel.mjs
+          node --check scripts/publish-instagram.mjs
+          node --check scripts/daily.mjs
+      - name: Render sample carousel
+        run: node scripts/render-carousel.mjs public/data/sample.json
+      - name: Verify output
+        run: |
+          test -f public/output/2026-08-23/slide-01.jpg
+          test -f public/output/2026-08-23/slide-06.jpg
+          test -f public/output/2026-08-23/manifest.json

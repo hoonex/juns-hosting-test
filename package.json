@@ -1,0 +1,23 @@
+{
+  "name": "daily-tech-carousel",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "news": "node scripts/generate-news.mjs",
+    "render": "node scripts/render-carousel.mjs",
+    "publish:instagram": "node scripts/publish-instagram.mjs",
+    "daily": "node scripts/daily.mjs"
+  },
+  "dependencies": {
+    "html-to-image": "^1.11.13",
+    "openai": "^5.19.1",
+    "sharp": "^0.34.3"
+  },
+  "devDependencies": {
+    "vite": "^7.1.3"
+  }
+}

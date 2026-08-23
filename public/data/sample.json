@@ -1,0 +1,61 @@
+{
+  "date": "2026-08-23",
+  "dateLabel": "2026.08.23",
+  "top3": [0, 1, 2],
+  "dailyThesisTitle": "오늘의 흐름",
+  "dailyThesis": "AI 경쟁은 이제 '더 큰 모델'만의 싸움이 아니다. 같은 모델이라도 메모리, 도구, 검증 루프를 어떻게 구성하느냐가 실제 성능과 비용을 크게 갈라놓기 시작했다.",
+  "news": [
+    {
+      "category": "AGENT",
+      "hook": "같은 Claude인데\n30% → 100%",
+      "headline": "NVIDIA AVO, 모델을 바꾸지 않고 에이전트 성능을 끌어올렸다",
+      "summary": "NVIDIA가 공개한 Agentic Variation Operators는 장기 메모리와 도구 사용, 검증 루프를 결합해 ARC-AGI-3 공개 과제에서 강한 결과를 보고했다. 핵심은 모델 자체를 교체하기보다 에이전트 하네스를 강화했다는 점이다.",
+      "whyItMatters": "Codex·Claude Code·OpenCode도 결국 모델뿐 아니라 하네스 설계가 성능을 좌우한다.",
+      "analysis": "모델 IQ 경쟁이 시스템 설계 경쟁으로 넓어지고 있다.",
+      "outlook": "향후 6~24개월 동안 메모리·verifier·tool loop가 코딩 에이전트의 핵심 차별점이 될 가능성이 높다.",
+      "status": "confirmed",
+      "sourceName": "NVIDIA",
+      "sourceUrl": "https://developer.nvidia.com/",
+      "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=85"
+    },
+    {
+      "category": "ROBOT",
+      "hook": "휴머노이드 100m\n9초대 진입",
+      "headline": "휴머노이드 달리기 기록이 1년 만에 크게 단축됐다",
+      "summary": "베이징의 휴머노이드 로봇 대회에서 100m 9초대 기록이 보고됐다. 단순한 최고속도보다 균형 제어, 관절 구동, 실시간 모션 계획이 빠르게 개선되고 있다는 점이 눈에 띈다.",
+      "whyItMatters": "로봇의 실제 작업 능력을 뒷받침하는 locomotion 기술이 빠르게 성숙하고 있다.",
+      "analysis": "다음 경쟁은 달리기보다 손 조작과 장시간 안정 작업이다.",
+      "outlook": "공장·물류처럼 구조화된 환경에서 상용 배치가 먼저 늘어날 가능성이 높다.",
+      "status": "confirmed",
+      "sourceName": "Reuters",
+      "sourceUrl": "https://www.reuters.com/",
+      "imageUrl": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1400&q=85"
+    },
+    {
+      "category": "HARDWARE",
+      "hook": "AI 서버 가격\n다시 오르나",
+      "headline": "AI 서버 비용 상승 가능성, HBM이 새로운 병목으로 부상",
+      "summary": "AI 서버 가격이 메모리와 HBM 비용 때문에 추가 상승할 수 있다는 업계 보도가 나왔다. 아직 제조사 공식 확정이 아닌 내용은 미확정으로 분리해 볼 필요가 있다.",
+      "whyItMatters": "API 가격이 내려가더라도 데이터센터 원가가 오르면 장기적인 AI 서비스 비용 구조가 달라질 수 있다.",
+      "analysis": "GPU보다 메모리·패키징 공급망이 가격을 좌우하는 시기가 길어질 수 있다.",
+      "outlook": "HBM 공급 확대와 차세대 AI 가속기 원가가 향후 1~2년 핵심 관전 포인트다.",
+      "status": "unconfirmed",
+      "sourceName": "Reuters / Bloomberg",
+      "sourceUrl": "https://www.reuters.com/",
+      "imageUrl": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=1400&q=85"
+    },
+    {
+      "category": "DEV",
+      "hook": "검색도 에이전트가 한다",
+      "headline": "RAG가 한 번 검색하는 방식에서 반복 탐색으로 진화",
+      "summary": "검색하고 문서를 열고 다시 grep하는 식의 agentic retrieval이 늘고 있다.",
+      "whyItMatters": "코딩 에이전트의 코드 탐색 방식과 직접 연결된다.",
+      "analysis": "좋은 RAG는 작은 research agent가 되고 있다.",
+      "outlook": "IDE의 context retrieval이 더 능동적으로 변할 가능성이 높다.",
+      "status": "confirmed",
+      "sourceName": "Official docs",
+      "sourceUrl": "https://example.com",
+      "imageUrl": ""
+    }
+  ]
+}
