@@ -1,0 +1,28 @@
+name: Build Jungdong Rust Worker
+on:
+  push:
+    branches:
+      - jungdong-rust-build-20261113
+  workflow_dispatch:
+jobs:
+  wasm:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - name: Download public room data (67 rooms)
+        run: curl --retry 3 -fsSL 'https://jungdong-campus-map.agfvrd.workers.dev/data.json' -o data.json
+      - name: Install Rust Worker build helper
+        run: cargo install worker-build --locked
+      - name: Build actual WASM
+        run: worker-build --release
+      - name: Upload Rust WASM build
+        uses: actions/upload-artifact@v4
+        with:
+          name: jungdong-rust-worker
+          path: build/worker/
+          if-no-files-found: error
